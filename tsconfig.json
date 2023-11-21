@@ -1,25 +1,49 @@
 {
   "compilerOptions": {
-    "types": ["node", "@testing-library/jest-dom", "vitest/globals"],
-    "target": "ESNext",
+    "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "allowJs": false,
-    "skipLibCheck": true,
-    "esModuleInterop": false,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "skipLibCheck": true,
+    "allowJs": true,
+    "maxNodeModuleJsDepth": 10,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "paths": {
-      "@/*": ["./src/*"],
-      "@test-utils": ["./test-utils"]
-    }
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+//    "types": ["node", "@testing-library/jest-dom", "vitest/globals"],
+//    "target": "ESNext",
+//    "useDefineForClassFields": true,
+//    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+//    "allowJs": true,
+//    "skipLibCheck": true,
+//    "esModuleInterop": false,
+//    "allowSyntheticDefaultImports": true,
+//    "strict": true,
+//    "forceConsistentCasingInFileNames": true,
+//    "module": "ESNext",
+//    "moduleResolution": "Node",
+//    "resolveJsonModule": true,
+//    "isolatedModules": true,
+//    "noEmit": true,
+//    "jsx": "react-jsx",
+//    "allowImportingTsExtensions": false,
+//    "paths": {
+//      "@/*": ["./src/*"],
+//      "@test-utils": ["./test-utils"]
+//    }
   },
-  "include": ["src", "test-utils"]
+  "include": ["src", "test-utils"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

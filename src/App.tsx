@@ -1,12 +1,29 @@
 import '@mantine/core/styles.css';
-import { MantineProvider } from '@mantine/core';
-import { Router } from './Router';
-import { theme } from './theme';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import { ClerkProvider } from '@clerk/clerk-react';
+import { viteClerkPublishableKey } from './constants';
+import RootLayout from './layouts/RootLayout';
+import ProtectedRoute from './routes/ProtectedRoute';
+import { HomePage } from './pages/Home.page';
 
 export default function App() {
+  const navigate = useNavigate();
+
   return (
-    <MantineProvider theme={theme}>
-      <Router />
-    </MantineProvider>
+    <ClerkProvider publishableKey={viteClerkPublishableKey} navigate={(to) => navigate(to)}>
+      <Routes>
+        <Route path="" element={<RootLayout />}>
+          <Route
+            path="/"
+            index
+            element={
+              <ProtectedRoute>
+                <HomePage />
+              </ProtectedRoute>
+            }
+          />
+        </Route>
+      </Routes>
+    </ClerkProvider>
   );
 }
